@@ -3,8 +3,13 @@
 
 int touchState[4] = {100,100,100,100};
 int touchLastState[4] = {100,100,100,100};
-int touchHigh = 45;
-int touchLow = 18;
+
+// These will likely need to be adjusted for your bananas!
+// Set debug = true to get serial debugging to see values when touched/untouched
+int touchHigh = 40;
+int touchLow = 22;
+
+bool debug = true;	// Set to true to output touch values to console - must be false for your big performance!
 
 void setup()
 {
@@ -21,21 +26,21 @@ void loop()
   delay(del);
   touchState[2] = touchRead(T7);	// IO27
   delay(del);
-  touchState[3] = touchRead(T8);	// IO33
+  touchState[3] = touchRead(T8);	// IO32
   delay(del);
 
-  //Serial.printf(">> %d %d %d\n",touchState[0],touchState[1],touchState[2]);
+  if (debug)
+  	Serial.printf(">> %d %d %d %d\n", touchState[0], touchState[1], touchState[2], touchState[3]);
+  
   for (int i = 0; i < 4; i++)
   {
     if ((touchState[i] < touchLow) && (touchLastState[i] > touchHigh))
     {
-      //Serial.printf("== %d: %d - %d\n", i, touchState[i], touchLastState[i]);
       Serial.println(i);
-         
     }
+
     if ((touchState[i] < touchLow) || (touchState[i] > touchHigh))
       touchLastState[i] = touchState[i];
-    //Serial.println(touchState[i]);
   }
   
 }
