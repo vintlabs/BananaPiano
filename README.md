@@ -91,7 +91,7 @@ VintLabs Banana Piano!
 2
 0
 ```
-You should see a number on the console that corresponds to the banana tht you touched. (Expect that there will be some anomalies... this is just a simple example!)
+You should see a number on the console that corresponds to the banana that you touched. (Expect that there will be some anomalies... this is just a simple example!)
 
 7. Test with the python script to hear your wonderful banana music! (be sure to close the serial console in the Arduino IDE first)
 ```
